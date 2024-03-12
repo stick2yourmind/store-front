@@ -41,6 +41,9 @@
   "prettier": {
     "plugins": [
       "prettier-plugin-tailwindcss"
+    ],
+    "tailwindFunctions": [
+      "cva"
     ]
   }
 }
