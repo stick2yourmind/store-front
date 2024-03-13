@@ -3,12 +3,11 @@
     "source.fixAll.eslint": "explicit"
   },
   "typescript.preferences.importModuleSpecifier": "non-relative",
-  "tailwindCSS.experimental.classRegex": [
-    ["Classes \\=([^;]*);", "'([^']*)'"],
-    ["Classes \\=([^;]*);", "\"([^\"]*)\""],
-    ["Classes \\=([^;]*);", "\\`([^\\`]*)\\`"],
-    ["Class \\=([^;]*);", "'([^']*)'"],
-    ["Class \\=([^;]*);", "\"([^\"]*)\""],
-    ["Class \\=([^;]*);", "\\`([^\\`]*)\\`"]
-  ],
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "ngClass",
+    ".*Classes", // Add ".*Classes.*" (or whatever matches your naming scheme)
+    ".*Class" // Add ".*Classes.*" (or whatever matches your naming scheme)
+  ]
 }
