@@ -2,9 +2,9 @@
 
 import Link from 'next/link';
 import { inter } from '@/lib/fonts';
-import Button from '@/component/ui/Button';
-import Input from '@/component/ui/Input';
 import useSignUp from '@/app/(auth)/signup/useSignUp';
+import Input from '@/components/ui/Input';
+import Button from '@/components/ui/Button';
 
 export default function Home() {
   const { handleSubmit, onSignUp, register, errors } = useSignUp();
