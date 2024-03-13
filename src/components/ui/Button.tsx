@@ -18,25 +18,21 @@ function Button({ children, className, variant, variantSize, ...props }: ButtonP
 export default Button;
 
 const buttonBaseClass = 'w-full rounded-md';
-const primaryClass =
-  'border-2 border-solid border-secondary-800 bg-primary-900 text-neutral-100 hover:bg-neutral-800';
-const secondaryClass =
-  'border-2 border-solid border-secondary-800 bg-neutral-100 text-primary-900 hover:bg-neutral-800';
-const smallClass = 'px-1 py-0 text-sm';
-const mediumClass = 'px-2 py-0 text-base';
-const largeClass = 'px-3 py-2 text-xl';
+const styleClasses = {
+  primary: 'border-2 border-solid border-secondary-800 bg-primary-900 text-neutral-100 hover:bg-neutral-800',
+  secondary:
+    'border-2 border-solid border-secondary-800 bg-neutral-100 text-primary-900 hover:bg-neutral-800',
+};
+const sizeClasses = {
+  sm: 'px-1 py-0 text-sm',
+  md: 'px-2 py-0 text-base',
+  lg: 'px-3 py-2 text-xl',
+};
 
 const buttonVariants = cva(buttonBaseClass, {
   variants: {
-    variant: {
-      primary: primaryClass,
-      secondary: secondaryClass,
-    },
-    variantSize: {
-      sm: smallClass,
-      md: mediumClass,
-      lg: largeClass,
-    },
+    variant: styleClasses,
+    variantSize: sizeClasses,
   },
   defaultVariants: {
     variant: 'primary',
