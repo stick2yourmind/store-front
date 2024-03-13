@@ -31,7 +31,7 @@ export default Input;
 
 const baseClass =
   'w-full rounded bg-secondary-900 p-3 text-sm font-normal text-secondary-200 outline outline-1 outline-secondary-800 hover:bg-neutral-100';
-const primaryClass = 'hover:bg-white focus-visible:outline focus-visible:outline-teal-500';
+const primaryClass = 'hover:bg-neutral-900 focus-visible:outline focus-visible:outline-teal-500';
 const secondaryClass = 'hover:bg-white focus-visible:outline focus-visible:outline-teal-500';
 const smallClass = 'text-sm';
 const mediumClass = 'text-base';
