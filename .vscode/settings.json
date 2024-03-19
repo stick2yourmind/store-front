@@ -2,5 +2,12 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit"
   },
-  "typescript.preferences.importModuleSpecifier": "non-relative"
+  "typescript.preferences.importModuleSpecifier": "non-relative",
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "ngClass",
+    ".*Classes", // Add ".*Classes.*" (or whatever matches your naming scheme)
+    ".*Class" // Add ".*Classes.*" (or whatever matches your naming scheme)
+  ]
 }
