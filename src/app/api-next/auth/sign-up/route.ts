@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-export interface ICustomerSignResponse {
+export interface IUserSignResponse {
   token: string;
-  customer: {
+  user: {
     id: number;
     email: string;
     createdAt: string;
@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
     },
   });
 
-  const jsonRes: ICustomerSignResponse = await res.json();
+  const jsonRes: IUserSignResponse = await res.json();
   if (res.ok) {
     let response = NextResponse.next();
     // Set a cookie to hide the banner
