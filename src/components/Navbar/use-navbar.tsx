@@ -4,6 +4,7 @@ import { toast } from 'sonner';
 import useUserStore from '@/store/user.store';
 import useCartStore from '@/store/cart.store';
 import { signOut } from '@/components/Navbar/signOut.service';
+import { customRevalidatePath } from '@/actions/custom-revalidate-path';
 
 function useNavbar() {
   const cartLength = useCartStore((state) => state.cart).length || null;
@@ -16,6 +17,7 @@ function useNavbar() {
     onSuccess: () => {
       toast.success('Sign out succesfully');
       signOutState();
+      customRevalidatePath('/');
       push('/');
     },
     onError: (error) => {
