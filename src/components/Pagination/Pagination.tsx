@@ -2,8 +2,16 @@ import Link from 'next/link';
 import { PiArrowCircleRightFill, PiArrowCircleLeftFill } from 'react-icons/pi';
 import usePagination from '@/components/Pagination/usePagination';
 
-function Pagination({ currentPage, total }: { currentPage: number; total: number }) {
-  const { maxPage, nextPage, previousPage } = usePagination({ currentPage, total });
+function Pagination({
+  currentPage,
+  total,
+  category,
+}: {
+  currentPage: number;
+  total: number;
+  category?: string;
+}) {
+  const { maxPage, nextPage, previousPage } = usePagination({ currentPage, total, category });
   return (
     <div className="flex gap-2 self-center p-4">
       {currentPage > 1 ? (
