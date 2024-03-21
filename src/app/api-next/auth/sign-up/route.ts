@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-export interface ICustomerSignResponse {
+export interface IUserSignResponse {
   token: string;
-  customer: {
+  user: {
     id: number;
     email: string;
     createdAt: string;
     updatedAt: string;
+    role: string[];
   };
 }
 
@@ -24,20 +25,29 @@ export async function POST(request: NextRequest) {
     },
   });
 
-  const jsonRes: ICustomerSignResponse = await res.json();
+  const jsonRes: IUserSignResponse = await res.json();
   if (res.ok) {
     let response = NextResponse.next();
-    // Set a cookie to hide the banner
+
+    const expireDate = new Date(Date.now() + 1000 * 60 * 60 * 24);
     const cookies = response.cookies.set({
       name: 'userToken',
       value: jsonRes.token,
-      expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
+      expires: expireDate,
+      httpOnly: process.env.NODE_ENV === 'production',
+      secure: process.env.NODE_ENV === 'production',
+    });
+    let roleResponse = NextResponse.next();
+    const roleCookie = roleResponse.cookies.set({
+      name: 'role',
+      value: JSON.stringify(jsonRes.user.role),
+      expires: expireDate,
       httpOnly: process.env.NODE_ENV === 'production',
       secure: process.env.NODE_ENV === 'production',
     });
     return NextResponse.json(jsonRes, {
       status: res.status,
-      headers: { 'Set-cookie': cookies.toString() },
+      headers: { 'Set-cookie': String([cookies, roleCookie]) },
     });
   }
 

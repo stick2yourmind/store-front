@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { IconContext } from 'react-icons';
 import { HiOutlineShoppingBag } from 'react-icons/hi2';
 import { PiSignInBold, PiSignOutBold } from 'react-icons/pi';
+import { RxDashboard } from 'react-icons/rx';
 import { FaRegUser } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import { FADE_DOWN_VARIANT } from '@/lib/framer-variant';
@@ -12,9 +13,10 @@ import useNavbar from '@/components/Navbar/use-navbar';
 
 export interface INavbarProps {
   isLogged: boolean;
+  roles: string[];
 }
 
-function Navbar({ isLogged }: INavbarProps) {
+function Navbar({ isLogged, roles }: INavbarProps) {
   const { signInState, signOutState, isLoggedState, mutate, cartLength } = useNavbar();
 
   useEffect(() => {
@@ -25,6 +27,13 @@ function Navbar({ isLogged }: INavbarProps) {
   return (
     <nav className="flex self-stretch">
       <ol className="flex gap-4 self-stretch">
+        {roles.includes('ADMIN') ? (
+          <li className="flex items-center justify-center">
+            <Link href="/dashboard" className="flex items-center justify-center gap-1 pr-4">
+              <RxDashboard className="text-xl" />
+            </Link>
+          </li>
+        ) : null}
         <li className="flex items-center justify-center">
           {isLoggedState ? (
             <>

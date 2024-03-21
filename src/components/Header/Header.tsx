@@ -6,6 +6,9 @@ import Navbar from '../Navbar/Navbar';
 function Header() {
   const cookieStore = cookies();
   const token = cookieStore.get('userToken');
+  const serializeRole = cookieStore.get('role')?.value;
+  const deserializeRole = decodeURIComponent(serializeRole || '');
+  const roles = JSON.parse(deserializeRole || '[]');
 
   return (
     <header className="sticky top-0 z-10 flex w-full items-center justify-between rounded bg-white/30 pb-4 pt-1 backdrop-blur-3xl">
@@ -13,7 +16,7 @@ function Header() {
         <h1>Edge</h1>
         <SiDedge />
       </Link>
-      <Navbar isLogged={!!token} />
+      <Navbar isLogged={!!token} roles={roles} />
     </header>
   );
 }

@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${brunoAceSc.className} relative flex min-h-screen flex-col items-center justify-center bg-zinc-50 px-4 lg:px-8`}
+        className={`${brunoAceSc.className} relative flex min-h-screen flex-col items-center justify-between bg-zinc-50 px-4 lg:px-8`}
       >
         <TanStackProvider>
           <Header />
